@@ -27,7 +27,6 @@ function ItemCount({ stock, initial }) {
   return (
     <>
       <div>Días {contador}</div>
-      
       <button onClick={() => restar()}>-</button>
       <button onClick={() => agregarAlCarrito()}>Agregar al Carrito </button>
       <button onClick={() => sumar()}>+</button>

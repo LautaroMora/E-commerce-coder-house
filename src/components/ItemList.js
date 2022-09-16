@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./Item";
 
 const ItemList = ({listCars}) => {
-    console.log(listCars)
+
     return (
             <>
             <div className="album py-5 bg-light">

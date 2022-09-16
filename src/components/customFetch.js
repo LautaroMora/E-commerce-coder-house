@@ -1,8 +1,8 @@
 
-const customFetch = (auto) => {    
+const customFetch = (task) => {    
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-            resolve(auto);
+            resolve(task);
             }, 2000);
         });
 };

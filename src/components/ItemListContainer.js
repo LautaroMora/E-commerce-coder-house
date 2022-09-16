@@ -16,7 +16,7 @@ const ItemListContainer = (props) => {
 
     return ( 
         <>
-        <h1>{props.greeting}</h1>
+        <h1 className='titulo'>{props.greeting}</h1>
         <div ><ItemList listCars={listCars}/> </div>
         </>
     )
