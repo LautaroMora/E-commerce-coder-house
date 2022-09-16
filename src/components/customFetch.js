@@ -8,3 +8,4 @@ const customFetch = (auto) => {
 };
 
 export default customFetch;
+

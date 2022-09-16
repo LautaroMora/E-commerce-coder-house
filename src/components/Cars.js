@@ -5,7 +5,7 @@ const Cars= [
     modelo : "Etios", 
     pasajeros:   5,
     precio : 5500, 
-    img : '/public/etios.jpg'
+    img : '/etios.jpg'
     },
 
     {
@@ -14,7 +14,7 @@ const Cars= [
     modelo : "Trailblazer", 
     pasajeros:  7,
     precio : 7500, 
-    img : '/public/trailblazer.jpg'
+    img : '/trailblazer.jpg'
     },
 
     {
@@ -23,7 +23,7 @@ const Cars= [
     modelo :  "Cronos", 
     pasajeros:   5,
     precio : 6000, 
-    img : '/public/cronos.webp'
+    img : '/cronos.webp'
     },
 
     {
@@ -32,7 +32,7 @@ const Cars= [
     modelo : "Cobalt", 
     pasajeros:   5,
     precio : 5000, 
-    img : '/public/cobalt.png'
+    img : '/cobalt.png'
     },
 
     {
@@ -41,7 +41,7 @@ const Cars= [
     modelo : "Corolla", 
     pasajeros:   5,
     precio : 5500, 
-    img :'/public/corolla.jpg'
+    img :'/corolla.jpg'
     },
 
     {
@@ -50,7 +50,7 @@ const Cars= [
     modelo : "Spin AT", 
     pasajeros: 7,
     precio : 7000, 
-    img : '/public/spin.jpg'
+    img : '/spin.jpg'
     }
 ];
 
