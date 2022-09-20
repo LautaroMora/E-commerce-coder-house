@@ -6,16 +6,15 @@ import { useParams } from 'react-router-dom';
 
 
 const ItemListContainer = (props) => {
-
     const [listCars, setListCars] = useState ([]);
-    const{params} = useParams()
-    console.log(params)
+    const{category} = useParams()
+    console.log(category)
 
     const customFetch = (task) => {    
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (params){
-                    resolve(Cars.filter((item)=>item.categoria== params));
+                if (category){
+                    resolve(Cars.filter((item)=>item.categoria== category));
                 }else resolve (Cars)
             resolve(task);
             }, 2000);
@@ -25,7 +24,7 @@ const ItemListContainer = (props) => {
     useEffect(() =>{
         customFetch(Cars)
         .then(data =>setListCars(data))
-    },[params]);
+    },[category]);
 
 
     return ( 
