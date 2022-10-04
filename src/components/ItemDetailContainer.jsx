@@ -13,17 +13,17 @@ const ItemDetailContainer = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (id){
-                    resolve(Cars.find((item)=>item.id== id));
+                    resolve(Cars.find((item)=>item.id == id));
                 }else resolve (Cars)
             }, 2000);
         });
-};
+    };
 
 
-    useEffect(() =>{
-        customFetch(id)
-        .then(data =>setDetalle(data))
-    },[id]);
+        useEffect(() =>{
+            customFetch(id)
+            .then(data =>setDetalle(data))
+        },[id]);
 
 
     return ( 
