@@ -22,7 +22,7 @@ const ItemDetail =({auto}) =>{
                                     Cantidad de Pasajeros: {auto.pasajeros}.
                                 </small>
                             </p>
-                                <ItemCount stock={20} initial={0}/>      
+                                <ItemCount stock={20} initial={0} item={auto}/>      
 
                             
 

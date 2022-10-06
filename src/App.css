@@ -2,8 +2,14 @@
     color: white;
     height: 30px;
     width: 30px;
-    margin: 10px;
+
+
 }
+
+.cart-container{
+    margin: 10px 20px 0px 0px;
+}
+
 .titulo{
     text-align: center;
 }

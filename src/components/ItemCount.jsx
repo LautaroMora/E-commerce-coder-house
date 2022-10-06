@@ -1,10 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import {Link} from 'react-router-dom';
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
-function ItemCount({ stock, initial }) {
+function ItemCount({ stock, initial,item }) {
   const [contador, setContador] = useState(initial);
-  const [carrito, setCarrito] = useState(initial)
+  const [carrito, setCarrito] = useState(initial);
+  const ctx = useContext(CartContext);
+
+
   const sumar = () => {
     if (contador < stock) {
       setContador(contador + 1);
@@ -24,7 +29,10 @@ function ItemCount({ stock, initial }) {
       alert("Estás llevando un auto por "+contador+" días.");
     } else {
       alert("No agregaste nada al carrito");
-  }
+  }   
+    
+  ctx.addItem(item,contador);
+  
   };
 
   return (
