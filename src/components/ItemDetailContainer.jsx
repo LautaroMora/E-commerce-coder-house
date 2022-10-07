@@ -1,29 +1,39 @@
 import { useEffect, useState } from "react";
-import Cars from './Cars';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import {db} from  '../utils/firebaseConfig';
+import { collection, getDocs } from "firebase/firestore";
+
 
 const ItemDetailContainer = () => {
 
     const [auto, setDetalle] = useState ({});
-    const{id} = useParams()
-    console.log(id)
-
-    const customFetch = (task) => {    
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (id){
-                    resolve(Cars.find((item)=>item.id == id));
-                }else resolve (Cars)
-            }, 2000);
-        });
-    };
+    const{id} = useParams();
 
 
+        const customFetch = (task) => {    
+            return new Promise(async (resolve) => {
+                const querySnapshot = await getDocs(collection(db, "autos",id));
+                const dataFromFirestore = querySnapshot.docs.map(item =>({
+                id : item.id,
+                ...item.data()
+            }))
+        
+                    if (id){
+                        resolve(dataFromFirestore.find((item)=>item.id == id));
+                    }else resolve (task)
+   
+        
+            });
+        };
+        
         useEffect(() =>{
-            customFetch(id)
+            customFetch(auto)
             .then(data =>setDetalle(data))
         },[id]);
+
+
+
 
 
     return ( 
