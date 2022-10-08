@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import {Link} from 'react-router-dom';
+
 
 const Cart = () => {
         
@@ -7,7 +9,8 @@ const Cart = () => {
         
         return <>
         <h1>Resumen de alquiler</h1>
-        <button onClick={ctx.clear} type="button" className="btn btn-dark">Vaciar Carrito </button> 
+        <button onClick={ctx.clear} type="button" className="btn btn-dark">Vaciar Carrito </button>
+        <Link to='/'><button type="button" className="btn btn-dark">Seguir comprando </button></Link>
         {
             ctx.cartList.map(item =>    
             <div class="row mb-2">
@@ -16,7 +19,7 @@ const Cart = () => {
                             <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 text-primary">{item.marca}</strong>
                             <h3 class="mb-0">{item.modelo}</h3>
-                            <div class="mb-1 text-muted">Nov 12</div>
+                            <div class="mb-1 text-muted">Días de alquiler: {item.cant}</div>
                             <p class="card-text mb-auto">{item.description}</p>
                             <button onClick={()=>ctx.removeItem(item.id)} type="button" className="btn btn-dark">Eliminar producto </button>
                             </div>

@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
         const customFetch = (task) => {    
             return new Promise(async (resolve) => {
-                const querySnapshot = await getDocs(collection(db, "autos",id));
+                const querySnapshot = await getDocs(collection(db, "autos"));
                 const dataFromFirestore = querySnapshot.docs.map(item =>({
                 id : item.id,
                 ...item.data()
@@ -22,13 +22,13 @@ const ItemDetailContainer = () => {
                     if (id){
                         resolve(dataFromFirestore.find((item)=>item.id == id));
                     }else resolve (task)
-   
+
         
             });
         };
         
         useEffect(() =>{
-            customFetch(auto)
+            customFetch(id)
             .then(data =>setDetalle(data))
         },[id]);
 
