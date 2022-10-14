@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createContext } from "react";
 
 export const CartContext = createContext();
@@ -7,23 +7,52 @@ const CartContexProvider =({children}) =>{
 
     const [cartList, setCartList] = useState([]);
 
-    const addItem = (product,cant)=>{
-        
-        setCartList([...cartList, product]);
+    const [quantityProducts, setQuantityProducts] = useState(0);
+    const getQuantity = () => {
+        let quantity = 0;
+        cartList.forEach(product => quantity += product.cant);
+        setQuantityProducts(quantity);
+        console.log("quntity", quantity)
+      
     }
-    
-    const removeItem = (id) =>{
-        setCartList(cartList.filter(item=>item.id !== id))
 
+
+
+    useEffect(() => {
+        getQuantity();
+    }, [cartList]);
+
+    const addItem = (product) => {
+        if (isInCart(product.id)) {
+            const found = cartList.find(p => p.id === product.id)
+            const index = cartList.indexOf(found);
+            const aux = [...cartList];
+            aux[index].quantity += product.quantity;
+            setCartList(aux)
+        } else {
+            setCartList([...cartList, product]);
+        }
     }
 
-    const calcItemCant = () =>{
-        let cant = cartList.map (item => item.cant);
-        return cant.reduce(((previousValue, currentValue)=>previousValue + currentValue),0);
-    } 
+    const removeItem = (id) => {
+        setCartList(cartList.filter(product => product.id !== id));
+        console.log("cartList", cartList)
+    }
 
-    const clear = () =>{
-        setCartList ([])
+    const isInCart = (id) => {
+        return cartList.some(products => products.id === id);
+    }
+
+    const clear = () => {
+        setCartList([]);
+    }
+
+    const totalPrice = () => {
+        return cartList.reduce((prev, act) => prev + act.cant * act.price, 0);
+    }
+
+    const totalProducts = () => {
+        return cartList.reduce((acc, productAct) => acc + productAct.quantity, 0);
     }
 
     return(
@@ -32,7 +61,11 @@ const CartContexProvider =({children}) =>{
             addItem, 
             removeItem, 
             clear,
-            calcItemCant}}>
+            getQuantity,
+            totalPrice,
+            totalProducts,
+            isInCart
+            }}>
             {children}
         </CartContext.Provider>
     );

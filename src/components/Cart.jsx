@@ -1,11 +1,47 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import {Link} from 'react-router-dom';
+import { serverTimestamp, doc, setDoc,collection, increment, updateDoc } from "firebase/firestore";
+import {db} from  '../utils/firebaseConfig';
+
 
 
 const Cart = () => {
         
         const ctx = useContext(CartContext);
+        
+        
+        const createOrder = async () =>{
+            const itemsForDB = ctx.cartList.map( item => ({
+                id : item.id,
+                title : item.modelo,
+                price : item.precio,
+                quantity : item.cant
+            }))
+            let order = {
+                buyer : {
+                    name : "Leo Messi",
+                    email : "leo@messi.com",
+                    phone : "1010101"
+                }, 
+                items : itemsForDB,
+                date : serverTimestamp(),
+                total : ctx.calcTotal()
+            }
+            const newOrderRef = doc(collection (db, "orders"));
+            await setDoc(newOrderRef, order);
+            
+            ctx.cartList.forEach(async (item) => {  
+            const itemRef = doc(db, "autos", item.id);
+                await updateDoc(itemRef, {
+                cant: increment(-item.cant)
+                });
+            });
+
+            ctx.clear();
+
+            alert ('Tu orden se ha generado! Éste es el ID de tu orden: '+newOrderRef.id)
+        }
         
         return <>
         <h1>Resumen de alquiler</h1>
@@ -32,6 +68,9 @@ const Cart = () => {
             </div>                      
             )
         }
+        <button onClick={createOrder} type="button" className="btn btn-dark">Checkout </button>
+        <h3 class="mb-0">Días de alquiler: {ctx.calcItemCant}</h3>
+        <h3 class="mb-0">Total: {ctx.totalPrice}</h3>
 
         </>;
     };
