@@ -17,9 +17,7 @@ Me inicié recientemente en el mundo de la programación. Éste año tuve la opo
 
 ###
 En éste proyecto armé un E-commerce basado en una empresa de alquileres de autos. Integrando un sistema de reservas de vehículos que contabiliza los días de renta/alquiler y los días disponibles en el año para ser alquilado.
-## Capturas
 
-![App Screenshot](https://res.cloudinary.com/dn6alvkam/image/upload/v1666628372/Vehiculos/clideo_editor_f6b5adb9ea454ccab54a5c0a1d3155b4_tnxfmu.gif)
 
 
 
