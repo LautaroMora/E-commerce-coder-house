@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { createContext } from "react";
+import { createContext,  useState} from "react";
+
 
 export const CartContext = createContext();
 
@@ -7,36 +7,21 @@ const CartContexProvider =({children}) =>{
 
     const [cartList, setCartList] = useState([]);
 
-    const [quantityProducts, setQuantityProducts] = useState(0);
-    const getQuantity = () => {
-        let quantity = 0;
-        cartList.forEach(product => quantity += product.cant);
-        setQuantityProducts(quantity);
-        console.log("quntity", quantity)
-      
-    }
-
-
-
-    useEffect(() => {
-        getQuantity();
-    }, [cartList]);
-
-    const addItem = (product) => {
+    const addItem = (product,contador) => {
         if (isInCart(product.id)) {
-            const found = cartList.find(p => p.id === product.id)
+            const found = cartList.find(p => p.id === product.id);
             const index = cartList.indexOf(found);
             const aux = [...cartList];
-            aux[index].quantity += product.quantity;
-            setCartList(aux)
+            aux[index].quantity += contador;
+            aux[index].precio += product.precio*contador;
+            setCartList(aux);
         } else {
-            setCartList([...cartList, product]);
+            setCartList([...cartList,{...product, quantity : contador, precio: product.precio*contador}])
         }
     }
 
     const removeItem = (id) => {
         setCartList(cartList.filter(product => product.id !== id));
-        console.log("cartList", cartList)
     }
 
     const isInCart = (id) => {
@@ -47,13 +32,10 @@ const CartContexProvider =({children}) =>{
         setCartList([]);
     }
 
-    const totalPrice = () => {
-        return cartList.reduce((prev, act) => prev + act.cant * act.price, 0);
-    }
+    const totalPrice =  cartList.reduce((prev, act) => prev +  act.precio, 0);
+    
 
-    const totalProducts = () => {
-        return cartList.reduce((acc, productAct) => acc + productAct.quantity, 0);
-    }
+    const totalProducts = cartList.reduce((acc, product) => acc + product.quantity, 0);
 
     return(
         <CartContext.Provider value={{
@@ -61,7 +43,6 @@ const CartContexProvider =({children}) =>{
             addItem, 
             removeItem, 
             clear,
-            getQuantity,
             totalPrice,
             totalProducts,
             isInCart

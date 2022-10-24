@@ -15,32 +15,19 @@ const ItemDetail =({auto}) =>{
                                 <p className="card-text">                          
                                 {auto.description}
                                 </p>
-                            <p class="card-text"
+                            <p className="card-text"
                                 ><small className="text-muted"> 
                                     Precio por día: ${auto.precio}.
                                     <br/> 
                                     Cantidad de Pasajeros: {auto.pasajeros}.
                                 </small>
                             </p>
-                                <ItemCount stock={auto.cant} initial={1} item={auto}/>      
-
-                            
-
-                            
-    </div>
-</div>
-
-
-
-
-
+                                <ItemCount  item={auto} key={auto.id}/>      
+                        </div>
+            </div>
         </>
     )
 };
-
-
-
-
 
 
 export default ItemDetail;  

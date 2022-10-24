@@ -14,30 +14,23 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <a className="nav-link active text-white" aria-current="page" >Quienes Somos</a>
+                    <Link to ="/category/2" className="nav-link text-white">Camionetas </Link>     
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link text-white" >Contacto</a>
+                    <Link to ="/category/1" className="nav-link text-white">Autos </Link>               
                     </li>
-                    <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Alquilar
-                    </a>
-                    <ul className="dropdown-menu">
-                        <li>
-                            <Link to ='/category/1' className="dropdown-item " >Autos</Link>
-                        </li>
+                        <li className="nav-item dropdown">
+                            <ul className="dropdown-menu">
+                                <li className="nav-item">
+                                <Link to ="/category/2" className="nav-link text-white">Camionetas </Link>     
+                                </li>
 
-                        <li>
-                            <Link to ='/category/2' className="dropdown-item" >Camionetas</Link>
-                        </li>
-                        <li><hr className="dropdown-divider"/></li>
-                        <li><a className="dropdown-item" >Consultanos</a></li>
-                    </ul>
+                                <li className="nav-item">
+                                <Link to ="/category/1" className="nav-link text-white">Autos </Link>               
+                                </li>
+                        </ul>
                     </li>
-                    <li className="nav-item">
-                    <a className="nav-link disabled text-white">Blog</a>
-                    </li>
+
                 </ul>
                 </div>
             </div>

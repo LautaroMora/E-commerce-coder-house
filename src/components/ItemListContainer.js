@@ -20,7 +20,7 @@ const customFetch = (task) => {
     }))
 
             if (category){
-                resolve(dataFromFirestore.filter((item)=>item.categoria == category));
+                resolve(dataFromFirestore.filter((item)=>item.categoria === category));
             }else resolve (dataFromFirestore)
         resolve(task);
 
@@ -35,7 +35,17 @@ useEffect(() =>{
 
     return ( 
         <>
-        <h1 className='titulo'>{props.greeting}</h1>
+        
+            <section className="py-5 text-center container">
+            <div className="row py-lg-5">
+            <div className="col-lg-6 col-md-8 mx-auto">
+                <h1 className="fw-light">ALQUILÁ Y VIAJÁ SEGURO</h1>
+                <p className="lead text-muted">¿En qué vehículo estás pensando?</p>
+                <p>
+                </p>
+            </div>
+            </div>
+        </section>
         <div ><ItemList listCars={listCars}/> </div>
         </>
     )

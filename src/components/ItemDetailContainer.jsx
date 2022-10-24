@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
             }))
         
                     if (id){
-                        resolve(dataFromFirestore.find((item)=>item.id == id));
+                        resolve(dataFromFirestore.find((item)=>item.id === id));
                     }else resolve (task)
 
         
@@ -31,10 +31,6 @@ const ItemDetailContainer = () => {
             customFetch(id)
             .then(data =>setDetalle(data))
         },[id]);
-
-
-
-
 
     return ( 
         <>

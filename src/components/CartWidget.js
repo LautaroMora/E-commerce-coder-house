@@ -5,14 +5,14 @@ import { CartContext } from "./CartContext";
 
 const CartWidget = () => {
 
-    const {calcItemCant} = useContext(CartContext);
+    const {totalProducts} = useContext(CartContext);
 
   return (
   <>
   <button type="button" className="btn position-relative cart-container">
   <BsCart3 className="cart"/>
   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    {calcItemCant}
+    {totalProducts}
   </span>
 </button>
   </> )

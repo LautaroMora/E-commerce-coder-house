@@ -11,12 +11,12 @@ const Item =({auto}) =>{
         <>
             <div className="col">
                 <div className="card shadow-sm">
-                        <title>{auto.marca}{auto.modelo}</title>
+              
                         <img src={auto.img} alt={auto.modelo} className="card-img-bottom" id={auto.id} width="100%" height="100%">
 
-                        </img>
-                        <text x="50%" y="50%" fill="#eceeef"dy=".3em">{auto.marca} {auto.modelo}</text>
+                    </img>
                         <div className="card-body">
+                                <h5 className="card-title">{auto.marca} {auto.modelo}</h5>
                                 <p className="card-text">Precio por día: ${auto.precio}.
                                 <br/>
                                 Cantidad de Pasajeros: {auto.pasajeros}.
